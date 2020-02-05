@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+    <%= render 'shared/head' %>
+  </head>
+
+  <body class="bg-white">
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/notices' %>
+    <div class="wrapper">
+      <div class="snow layer1 a"></div>
+      <div class="snow layer1"></div> 
+      <div class="snow layer2 a"></div>
+      <div class="snow layer2"></div>
+      <div class="snow layer3 a"></div>
+      <div class="snow layer3"></div>
+    
+        <%= content_for?(:content) ? yield(:content) : yield %>
+        
+        <!-- Scroll to top button -->
+        <%= render 'shared/back_to_top' %>
+    </div>
+    <%= render 'shared/footer', locals: {start_year: '2018'} %>
+
+    <!-- JavaScript -->
+    <%= render 'shared/utils/js_tags' %>
+  </body>
+</html>

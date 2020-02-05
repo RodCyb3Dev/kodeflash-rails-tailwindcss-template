@@ -1,0 +1,33 @@
+<% content_for :devise_form do %>
+  <h2 class="heading text-4xl font-bold pt-4 mb-8"><%= t('.sign_in', :default => "Kirjaudu sisään lomake") %></h2>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="mb-6">
+      <%= f.label :email, class:"label" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: t('.email', :default => 'Sähköposti'), class: "input" %>
+    </div>
+
+    <div class="mb-6">
+      <%= f.label :password, class:"label" %>
+      <%= f.password_field :password, autocomplete: "current-password", placeholder: t('.password', :default => 'Salasana'), class: "input" %>
+    </div>
+
+    <div class="mb-6 flex">
+      <% if devise_mapping.rememberable? -%>
+        <%= f.check_box :remember_me, class:"mr-2 leading-tight" %>
+        <%= f.label :remember_me, t('.remember_me', :default => 'Muista minut'), class:"block text-grey-darker" %>
+      <% end -%>
+    </div>
+
+    <div class="md-6">
+      <%= f.submit t('.sign_in', :default => "Kirjaudu sisään"), class: "btn btn-default" %>
+    </div>
+
+  <% end %>
+  <hr class="border mt-6" />
+  <%= render "devise/shared/links" %>
+<% end %>
+<div class="container mt-3 auth-links">
+  <%= render "devise/shared/custom_auth_links" %>
+</div>
+
+<%= render "devise/shared/form_wrap" %>

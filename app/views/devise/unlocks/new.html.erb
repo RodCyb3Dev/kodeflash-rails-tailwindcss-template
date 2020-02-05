@@ -1,0 +1,23 @@
+<% content_for :devise_form do %>
+  <h2 class="heading text-4xl font-bold pt-4 mb-8">
+    <%= t('.resend_unlock_instructions', :default => "Resend unlock instructions") %>
+  </h2>
+  <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="mb-6">
+      <%= f.label :email, class: "label" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: t('.email', :default => 'Sähköposti'), class: "input" %>
+    </div>
+
+    <div class="mb-6">
+      <%= f.submit t('.resend_unlock_instructions', :default => "Resend unlock instructions"), class: "btn btn-default" %>
+    </div>
+  <% end %>
+
+  <hr class="border mt-6" />
+  <p class="text-sm text-grey-dark font-serif">Already have an account?</p>
+  <%= render "devise/shared/links" %>
+<% end %>
+
+<%= render "devise/shared/form_wrap" %>
